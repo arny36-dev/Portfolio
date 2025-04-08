@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 const ContactSchema = z.object({
   user_name: z.string().min(2, "Meno je povinné"),
   user_email: z.string().email("Neplatný email"),
-  message: z.string().min(5, "Správa musí mať aspoň 5 znakov"),
+  message: z.string().min(20, "Správa musí mať aspoň 20 znakov"),
 });
 
 type ContactFormInputs = z.infer<typeof ContactSchema>;

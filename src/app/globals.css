@@ -28,7 +28,6 @@ body {
   min-height: 100vh;
 }
 
-/* Waving hand animation */
 @keyframes wave {
   0% { transform: rotate(0deg); }
   10% { transform: rotate(14deg); }
@@ -70,6 +69,55 @@ body {
   @keyframes shine {
     0% { left: -75%; }
     100% { left: 125%; }
+  }
+
+  .btn-link {
+    @apply relative inline-flex items-center text-lg font-semibold px-6 py-2 rounded-full border border-[var(--muted)] text-[var(--foreground)] transition-all duration-300;
+  }
+  
+  .btn-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(120deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+  }
+  
+  .btn-link:hover::before {
+    opacity: 0.1;
+  }
+  
+  .btn-link:hover {
+    color: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+  
+  .btn-link > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .active-link {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  
+  .brand-title {
+    @apply text-2xl font-extrabold transition-colors duration-300;
+    color: var(--accent);
+  }
+  
+  .brand-title:hover {
+    color: var(--accent-hover);
+  }
+  
+  .basic-input {
+    @apply w-full border border-gray-300 rounded px-4 py-2 
+      focus:outline-none focus:ring-2 focus:ring-black transition-shadow;
+      color: var(--foreground);
   }
 
   h1 {

@@ -5,7 +5,7 @@ import HeroSection from "@/app/components/HeroSection";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-h-[calc(100vh-64px)] px-4 pt-16 pb-8  text-white">
+    <main className="flex flex-col items-center min-h-[calc(100vh-100px)] px-4 pt-16 pb-8  text-white">
       <section className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-20 w-full">
         <HeroSection />
         <div className="flex justify-center items-center w-full sm:w-[350px]">
