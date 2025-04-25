@@ -32,6 +32,11 @@
     "lightningcss": "^1.29.3",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@tailwindcss/oxide-linux-x64-gnu": "npm:@tailwindcss/oxide@latest"
+  },
+  "overrides": {
+    "@tailwindcss/oxide-linux-x64-gnu": "npm:@tailwindcss/oxide@latest"
   }
+
 }
