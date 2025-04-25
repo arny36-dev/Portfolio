@@ -1,9 +1,4 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  experimental: {
-    optimizeCss: false,
-  },
-};
+// next.config.ts
+const nextConfig = {}
 
 export default nextConfig;

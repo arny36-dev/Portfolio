@@ -24,19 +24,13 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
-    "lightningcss": "^1.29.3",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.1",
-    "typescript": "^5",
-    "@tailwindcss/oxide-linux-x64-gnu": "npm:@tailwindcss/oxide@latest"
-  },
-  "overrides": {
-    "@tailwindcss/oxide-linux-x64-gnu": "npm:@tailwindcss/oxide@latest"
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
   }
-
 }
