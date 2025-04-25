@@ -13,9 +13,9 @@ export default function WeatherSearch({ onSearch }: Props) {
         value={city}
         onChange={(e) => setCity(e.target.value)}
         placeholder="Zadaj mesto"
-        className="border p-2 rounded"
+        className="basic-input"
       />
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+      <button type="submit" className="bg-blue-500 p-2 rounded">
         Hľadať
       </button>
     </form>
