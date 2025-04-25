@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { Menu, X, User, Home, Mail } from "lucide-react"
+import { Menu, X, User, Folder, Home, Mail } from "lucide-react"
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -16,6 +16,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Domov", icon: <Home size={18} /> },
     { href: "/about", label: "O mne", icon: <User size={18} /> },
+    { href: "/projects", label: "Projekty", icon: <Folder size={18} /> },
     { href: "/contact", label: "Kontakt", icon: <Mail size={18} /> },
   ]
 

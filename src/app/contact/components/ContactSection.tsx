@@ -2,57 +2,72 @@
 import { useEmailSubmit } from "./../hooks/useEmailSubmit";
 import { Toaster } from "react-hot-toast";
 
+// Pomocná komponenta pre input
+const InputField = ({ register, name, type, placeholder, error }: any) => (
+  <div>
+    <input
+      type={type}
+      placeholder={placeholder}
+      {...register(name)}
+      className="basic-input"
+    />
+    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+  </div>
+);
+
+// Pomocná komponenta pre textarea
+const TextareaField = ({ register, name, placeholder, rows, error }: any) => (
+  <div>
+    <textarea
+      placeholder={placeholder}
+      rows={rows}
+      {...register(name)}
+      className="basic-input"
+    />
+    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+  </div>
+);
+
 export default function ContactSection() {
   const { formRef, register, handleSubmit, errors, isSubmitting } = useEmailSubmit();
 
   return (
     <section className="w-full px-6 py-12 relative">
       <Toaster position="top-center" reverseOrder={false} />
+      
       <div className="max-w-6xl mx-auto flex justify-center flex-col md:flex-row items-center gap-10">
         <div className="w-full md:w-1/2">
           <h2 className="h2">Zaujal som ťa ?</h2>
-          <p className="p">Kontaktuj ma pomocou e-mailu dolu!</p>
+          <p className="p mb-6">Kontaktuj ma pomocou e-mailu dolu!</p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <input
-                type="text"
-                placeholder="Meno + Priezvisko"
-                {...register("user_name")}
-                className="basic-input"
-              />
-              {errors.user_name && (
-                <p className="text-red-500 text-sm mt-1">{errors.user_name.message}</p>
-              )}
-            </div>
+            <InputField
+              register={register}
+              name="user_name"
+              type="text"
+              placeholder="Meno + Priezvisko"
+              error={errors.user_name}
+            />
 
-            <div>
-              <input
-                type="email"
-                placeholder="Email"
-                {...register("user_email")}
-                className="basic-input"
-              />
-              {errors.user_email && (
-                <p className="text-red-500 text-sm mt-1">{errors.user_email.message}</p>
-              )}
-            </div>
+            <InputField
+              register={register}
+              name="user_email"
+              type="email"
+              placeholder="Email"
+              error={errors.user_email}
+            />
 
-            <div>
-              <textarea
-                placeholder="Správa ..."
-                rows={4}
-                {...register("message")}
-                className="basic-input"
-              />
-              {errors.message && (
-                <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
-              )}
-            </div>
+            <TextareaField
+              register={register}
+              name="message"
+              rows={4}
+              placeholder="Správa ..."
+              error={errors.message}
+            />
 
             <button
               type="submit"
-              className="btn-gradient"
+              className="btn-gradient w-full md:w-auto"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Odosielam..." : "Odoslať správu"}
