@@ -7,7 +7,7 @@ export type WeatherData = {
     pressure: number;
   };
   weather: {
-    main: string;             // 👈 sem to doplni
+    main: string;
     description: string;
     icon: string;
   }[];
@@ -22,4 +22,21 @@ export type WeatherData = {
     sunrise: number;
     sunset: number;
   };
+};
+
+export type ForecastItem = {
+  dt: number;
+  main: {
+    temp: number;
+  };
+  weather: {
+    main: string; 
+    description: string;
+    icon: string;
+  }[];
+  dt_txt: string;
+};
+
+export type ForecastData = {
+  list: ForecastItem[];
 };
