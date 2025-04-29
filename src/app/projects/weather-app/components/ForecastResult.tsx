@@ -40,17 +40,23 @@ export default function ForecastResult({ forecast }: Props) {
   const grouped = groupByDay(forecast.list);
 
   return (
-    <section className="w-full max-w-5xl mx-auto mt-10 flex flex-col gap-8">
-      {Object.entries(grouped).map(([date, items]) => (
-        <div key={date} className="bg-purple-800/80 rounded-xl p-4 text-white shadow-md">
-          <h3 className="text-lg font-semibold mb-6">{new Date(date).toLocaleDateString("sk-SK", { weekday: "long", day: "2-digit", month: "2-digit" })}</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {items.map((item) => (
-              <ForecastCard key={item.dt} item={item} />
-            ))}
+    <section className="w-full max-w-5xl mx-auto mt-10">
+      <div className="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-xl p-4 text-white">
+        {Object.entries(grouped).map(([date, items]) => (
+          <div key={date} className="mb-10">
+            <h3 className="text-lg font-semibold mb-6 text-center">
+              {new Date(date).toLocaleDateString("sk-SK", { weekday: "long", day: "2-digit", month: "2-digit" })}
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              {items.map((item) => (
+                <ForecastCard key={item.dt} item={item} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
+  
+  
 }

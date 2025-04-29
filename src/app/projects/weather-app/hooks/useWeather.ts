@@ -9,19 +9,36 @@ export function useWeather() {
   const [forecast, setForecast] = useState<ForecastData | null>(null);
   const [error, setError] = useState('');
 
+  const searchCurrentWeather = async (city: string) => {
+    try {
+      const currentWeather = await fetchCurrentWeather(city);
+      setWeather(currentWeather);
+    } catch (err) {
+      setWeather(null);
+      setError('Nepodarilo sa načítať aktuálne počasie.');
+      throw err; 
+    }
+  };
+
+  const searchForecastWeather = async (city: string) => {
+    try {
+      const forecastWeather = await fetchForecastWeather(city);
+      setForecast(forecastWeather);
+    } catch (err) {
+      setForecast(null);
+      setError('Nepodarilo sa načítať predpoveď počasia.');
+      throw err; 
+    }
+  };
+
   const searchWeather = async (city: string) => {
     try {
       setError('');
-      const [currentWeather, forecastWeather] = await Promise.all([
-        fetchCurrentWeather(city),
-        fetchForecastWeather(city),
+      await Promise.all([
+        searchCurrentWeather(city),
+        searchForecastWeather(city),
       ]);
-
-      setWeather(currentWeather);
-      setForecast(forecastWeather);
     } catch (err) {
-      setWeather(null);
-      setForecast(null);
       setError('Mesto sa nenašlo alebo nastala chyba.');
     }
   };
